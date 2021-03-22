@@ -6,7 +6,7 @@ qbffam is a generator for QBF benchmarks in QDIMACS format
 that currently supports 12 formula families of crafted formula instances
 from QBF proof complexity
 
-#Usage
+##Usage
 
 python qbffam.py <family> <n>
 
