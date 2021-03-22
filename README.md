@@ -8,7 +8,7 @@ from QBF proof complexity
 
 <h2>Usage</h2>
 
-python qbffam.py <family> <n>
+python qbffam.py &lt;family&gt; &lt;n&gt;
 
 where 
 
