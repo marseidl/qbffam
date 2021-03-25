@@ -622,7 +622,7 @@ if (len (sys.argv) == 2):
         print ("supported familes: ")
         print ("EQ          Equalities")
         print ("EQ2         Squared Equalities")
-        print ("CP          Completion Principle")
+        print ("CR          Completion Principle")
         print ("TRAP        Trapdoor Familiy")
         print ("LONSING     Lonsing familiy")
         print ("BEQ         Blocked Equality Formula")
@@ -656,7 +656,7 @@ if f == "EQ2":
     EQ2 (n)
     sys.exit (0)
 
-if f == "CP": 
+if f == "CR": 
     CR (n)
     sys.exit (0)
 
