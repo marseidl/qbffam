@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #Copyright (c) 2020 Martina Seidl, Johannes Kepler University Linz, Austria
 
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -8,13 +9,10 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #SOFTWARE.
 
-
-#!/usr/bin/python
-
 import sys
 
 def error (message): 
-    print "Error: " + message
+    print("Error: " + message)
     sys.exit (1)
 
 
@@ -27,43 +25,43 @@ def EQ (n):
     if n < 2:
         error ("EQ: expect size < 2")
 
-    print "p cnf " + str (3*n) + " " + str (2*n+1)
+    print("p cnf " + str (3*n) + " " + str (2*n+1))
 
     # print the prefix
 
-    print ("e"),
+    print(("e"), end=' ')
 
     for i in range (n): 
-        print str (i+1),
+        print(str (i+1), end=' ')
 
-    print (0)
+    print((0))
 
-    print ("a"),
+    print(("a"), end=' ')
 
     for i in range (n): 
-        print str (i+n+1),
+        print(str (i+n+1), end=' ')
 
-    print (0)
+    print((0))
  
-    print ("e"),
+    print(("e"), end=' ')
 
     for i in range (n): 
-        print str (i+2*n+1),
+        print(str (i+2*n+1), end=' ')
 
-    print (0)
+    print((0))
 
     # print the matrix
 
     for i in range (n): 
-        print str (i+1) + " " + str (i+n+1) + " -" + str (i+2*n+1),
-        print "0"
-        print "-" + str (i+1) + " -" + str (i+n+1) + " -" + str (i+2*n+1),
-        print "0"
+        print(str (i+1) + " " + str (i+n+1) + " -" + str (i+2*n+1), end=' ')
+        print("0")
+        print("-" + str (i+1) + " -" + str (i+n+1) + " -" + str (i+2*n+1), end=' ')
+        print("0")
 
     for i in range (n): 
-        print (i+2*n+1),
+        print((i+2*n+1), end=' ')
 
-    print "0"
+    print("0")
 
 
 # equality square formulas from 
@@ -74,27 +72,27 @@ def EQ2 (n):
     if n < 2:
         error ("EQ: expect size < 2")
 
-    print "p cnf " + str (4*n+n*n) + " " + str (4*n*n+1)
+    print("p cnf " + str (4*n+n*n) + " " + str (4*n*n+1))
 
-    print "e", 
+    print("e", end=' ') 
 
     for i in range (n): 
-        print str (i+1) + " " + str (n+i+1),
+        print(str (i+1) + " " + str (n+i+1), end=' ')
 
     print ("0")
 
-    print "a", 
+    print("a", end=' ') 
 
     for i in range (n): 
-        print str (2*n+i+1) + " " + str (3*n+i+1),
+        print(str (2*n+i+1) + " " + str (3*n+i+1), end=' ')
     
     print ("0")
 
-    print "e",
+    print("e", end=' ')
 
     for i in range (n): 
         for j in range (n): 
-            print str (4*n + i*n + j + 1),
+            print(str (4*n + i*n + j + 1), end=' ')
 
     print ("0")
 
@@ -102,30 +100,30 @@ def EQ2 (n):
 
     for i in range (n): 
         for j in range (n):
-            print str (i+1) + " " + str (n + j + 1), 
-            print str (2 * n + i + 1) + " " + str (3 * n + j + 1),
-            print str (4 * n + i * n + j + 1),
+            print(str (i+1) + " " + str (n + j + 1), end=' ') 
+            print(str (2 * n + i + 1) + " " + str (3 * n + j + 1), end=' ')
+            print(str (4 * n + i * n + j + 1), end=' ')
             print ("0")
 
-            print str (i+1) + " -" + str (n + j + 1), 
-            print str (2 * n + i + 1) + " -" + str (3 * n + j + 1),
-            print str (4 * n + i * n + j + 1),
+            print(str (i+1) + " -" + str (n + j + 1), end=' ') 
+            print(str (2 * n + i + 1) + " -" + str (3 * n + j + 1), end=' ')
+            print(str (4 * n + i * n + j + 1), end=' ')
             print ("0")
             
-            print "-" + str (i+1) + " " + str (n + j + 1), 
-            print "-" + str (2 * n + i + 1) + " " + str (3 * n + j + 1),
-            print str (4 * n + i * n + j + 1),
+            print("-" + str (i+1) + " " + str (n + j + 1), end=' ') 
+            print("-" + str (2 * n + i + 1) + " " + str (3 * n + j + 1), end=' ')
+            print(str (4 * n + i * n + j + 1), end=' ')
             print ("0")
 
-            print "-" + str (i+1) + " -" + str (n + j + 1), 
-            print "-" + str (2 * n + i + 1) + " -" + str (3 * n + j + 1),
-            print str (4 * n + i * n + j + 1),
+            print("-" + str (i+1) + " -" + str (n + j + 1), end=' ') 
+            print("-" + str (2 * n + i + 1) + " -" + str (3 * n + j + 1), end=' ')
+            print(str (4 * n + i * n + j + 1), end=' ')
             print ("0")
 
     for i in range (n): 
         for j in range (n): 
-         print "-" + str (4*n + i*n + j + 1), 
-    print 0
+         print("-" + str (4*n + i*n + j + 1), end=' ') 
+    print(0)
 
 # CR formulas
 # Mikolas Janota:
@@ -135,61 +133,61 @@ def CR (n):
         error ("CR: expect size < 2")
 
 
-    print "p cnf " + str ((n+2) * n + 1) + " " + str (2 * n * n + 2) 
+    print("p cnf " + str ((n+2) * n + 1) + " " + str (2 * n * n + 2)) 
 
 
-    print "e", 
+    print("e", end=' ') 
 
     z = str ((n+2) * n +1)
 
     for i in range (n):
         for j in range (n): 
-            print str(i * n + j + 1),
-    print 0
+            print(str(i * n + j + 1), end=' ')
+    print(0)
         
-    print "a " + z + " 0"
+    print("a " + z + " 0")
 
-    print "e",
+    print("e", end=' ')
 
     for i in range (n): 
-        print str (n*n+i+1) + " " + str((n+1)*n+i+1),
-    print 0
+        print(str (n*n+i+1) + " " + str((n+1)*n+i+1), end=' ')
+    print(0)
 
     for i in range (n):
         for j in range (n): 
-            print str (i*n+j+1) + " " + z + " " +str (n*n+i+1) + " 0"
-            print "-" + str (i*n+j+1) + " -" + z + " " +str ((n+1)*n+j+1) + " 0"
+            print(str (i*n+j+1) + " " + z + " " +str (n*n+i+1) + " 0")
+            print("-" + str (i*n+j+1) + " -" + z + " " +str ((n+1)*n+j+1) + " 0")
 
     for i in range (n): 
-        print "-" + (str (n*n+i+1)),
-    print "0"
+        print("-" + (str (n*n+i+1)), end=' ')
+    print("0")
 
     for i in range (n): 
-        print "-" + (str ((n+1)*n+i+1)),
-    print "0"
+        print("-" + (str ((n+1)*n+i+1)), end=' ')
+    print("0")
 
 # trapdoor formulas
 # Olaf Beyersdorff, Benjamin Boehm:
 # Understanding the Relative Strength of QBF CDCL Solvers and QBF Resolution. Electronic Colloquium on Computational Complexity (ECCC) 27: 53 (2020)
 def TRAP (n) : 
 
-    print "p cnf " + str ((n+1)*n*2 + 3) + " " + str (n * (n+1) * (n+1)  - (n-1)* (n+1) + 6 * n*(n+1))
+    print("p cnf " + str ((n+1)*n*2 + 3) + " " + str (n * (n+1) * (n+1)  - (n-1)* (n+1) + 6 * n*(n+1)))
 
     w = str ((n+1)*n*2+1)
     u = str ((n+1)*n*2+2)
     t = str ((n+1)*n*2+3)
 
-    print "e",
+    print("e", end=' ')
 
     for i in range ((n+1)*n):
-        print str ((n+1)*n+i+1),
-    print "0"
-    print "a " + w + " 0"
-    print "e "+ t, 
+        print(str ((n+1)*n+i+1), end=' ')
+    print("0")
+    print("a " + w + " 0")
+    print("e "+ t, end=' ') 
     for i in range ((n+1)*n):
-        print str (i+1),
-    print "0"
-    print "a " + u + " 0"
+        print(str (i+1), end=' ')
+    print("0")
+    print("a " + u + " 0")
 
     # matrix
 
@@ -197,30 +195,30 @@ def TRAP (n) :
 
     for i in range (n+1): 
         for j in range (n): 
-            print str (i*n + j +1), 
-        print "0"
+            print(str (i*n + j +1), end=' ') 
+        print("0")
 
     for j in range (n): 
         for i1 in range (n+1): 
             for i2 in range (n+1) :
                 if i1 != i2: 
-                    print "-" + str (i1*n+j+1) + " -" + str (i2*n+j+1) + " 0"
+                    print("-" + str (i1*n+j+1) + " -" + str (i2*n+j+1) + " 0")
 
     # rest
     for i in range (n*(n+1)): 
         o = n*(n+1)
-        print "-" + str (i+1) + " " + str (o + i + 1) + " " + u + " 0"
-        print str (i+1) + " -" + str (o + i + 1) + " " + u + " 0"
+        print("-" + str (i+1) + " " + str (o + i + 1) + " " + u + " 0")
+        print(str (i+1) + " -" + str (o + i + 1) + " " + u + " 0")
 
-        print str (o+i+1) + " " + w + " " + t + " 0"
-        print "-" + str (o+i+1) + " " + w + " " + t + " 0"
-        print str (o+i+1) + " -" + w + " " + t + " 0"
-        print str (o+i+1) + " " + w + " -" + t + " 0"
+        print(str (o+i+1) + " " + w + " " + t + " 0")
+        print("-" + str (o+i+1) + " " + w + " " + t + " 0")
+        print(str (o+i+1) + " -" + w + " " + t + " 0")
+        print(str (o+i+1) + " " + w + " -" + t + " 0")
 
 # PhD thesis of Florian Lonsing, JKU Linz, 2012 
 def LONSING (n): 
 
-    print "p cnf " + str (n * (n+1) + 6) + " " + str (n + 1 + n * (n+1) * (n+1) - (n * (n+1))+5)
+    print("p cnf " + str (n * (n+1) + 6) + " " + str (n + 1 + n * (n+1) * (n+1) - (n * (n+1))+5))
 
     a = str (n * (n+1) + 1)
     b = str (n * (n+1) + 2)
@@ -229,41 +227,41 @@ def LONSING (n):
     x = str (n * (n+1) + 5)
     y = str (n * (n+1) + 6)
 
-    print "e" + " " + a + " " +b,
+    print("e" + " " + a + " " +b, end=' ')
 
     for i in range ((n+1)*n):
-        print str (i+1),
+        print(str (i+1), end=' ')
 
-    print "0"
+    print("0")
 
-    print "a " + x + " " + y + " 0" 
-    print "e " + c + " " + d + " 0" 
+    print("a " + x + " " + y + " 0") 
+    print("e " + c + " " + d + " 0") 
 
     # pigeon hole
 
     for i in range (n+1): 
         for j in range (n): 
-            print str (i*n + j +1), 
-        print "0"
+            print(str (i*n + j +1), end=' ') 
+        print("0")
 
     for j in range (n): 
         for i1 in range (n+1): 
             for i2 in range (n+1) :
                 if i1 != i2: 
-                    print "-" + str (i1*n+j+1) + " -" + str (i2*n+j+1) + " 0"
+                    print("-" + str (i1*n+j+1) + " -" + str (i2*n+j+1) + " 0")
 
-    print a + " " + x + " " + c + " 0"
+    print(a + " " + x + " " + c + " 0")
 
-    print a + " " + b, 
+    print(a + " " + b, end=' ') 
     for i in range (n * (n+1)): 
-        print i+1,
-    print 0
+        print(i+1, end=' ')
+    print(0)
 
-    print b + " " + y + " " + d + " 0"
+    print(b + " " + y + " " + d + " 0")
 
 
-    print x + " " + c + " 0"
-    print x + " -" + c + " 0"
+    print(x + " " + c + " 0")
+    print(x + " -" + c + " 0")
 
 
 
@@ -275,69 +273,69 @@ def blocked_EQ (n):
     if n < 2:
         error ("Blocked-EQ: expect size < 2")
 
-    print "p cnf " + str (6*n+2) + " " + str (2*n+1+3*n+1)
+    print("p cnf " + str (6*n+2) + " " + str (2*n+1+3*n+1))
 
     # print the prefix
 
     a = str (6*n+1)
     c = str (6*n+2)
 
-    print ("e"),
+    print(("e"), end=' ')
 
 
-    print a,
+    print(a, end=' ')
 
     for i in range (3*n): 
-        print str (3*n + i + 1),
+        print(str (3*n + i + 1), end=' ')
 
     for i in range (n): 
-        print str (i+1),
+        print(str (i+1), end=' ')
 
-    print (0)
+    print((0))
 
-    print ("a"),
+    print(("a"), end=' ')
 
     for i in range (n): 
-        print str (i+n+1),
+        print(str (i+n+1), end=' ')
 
-    print (0)
+    print((0))
  
-    print ("e"),
+    print(("e"), end=' ')
 
     for i in range (n): 
-        print str (i+2*n+1),
+        print(str (i+2*n+1), end=' ')
 
-    print (0)
+    print((0))
 
-    print "a " + c + " 0"
+    print("a " + c + " 0")
 
     # print the matrix
 
     for i in range (n): 
-        print str (i+1) + " " + str (i+n+1) + " -" + str (i+2*n+1),
-        print "-" + a + " " + c + " 0"
-        print "-" + str (i+1) + " -" + str (i+n+1) + " -" + str (i+2*n+1),
-        print "-" + a + " " + c + " 0"
+        print(str (i+1) + " " + str (i+n+1) + " -" + str (i+2*n+1), end=' ')
+        print("-" + a + " " + c + " 0")
+        print("-" + str (i+1) + " -" + str (i+n+1) + " -" + str (i+2*n+1), end=' ')
+        print("-" + a + " " + c + " 0")
 
     for i in range (n): 
-        print (i+2*n+1),
-    print "-" + a + " " + c + " 0"
+        print((i+2*n+1), end=' ')
+    print("-" + a + " " + c + " 0")
 
-    print a + " 0"
+    print(a + " 0")
 
     for i in range (3 * n): 
         for j in range (i+1): 
-            print (3*n + j +1), 
-        print (i+1),
-        print "0"
+            print((3*n + j +1), end=' ') 
+        print((i+1), end=' ')
+        print("0")
 
 
 def printXOR (x, y, z): 
 
-    print "-" + str (x) + " -" + str (y) + " -" + str (z) + " 0"
-    print "-" + str (x) + " " + str (y) + " " + str (z) + " 0"
-    print  str (x) + " -" + str (y) + " " + str (z) + " 0"
-    print  str (x) + " " + str (y) + " -" + str (z) + " 0"
+    print("-" + str (x) + " -" + str (y) + " -" + str (z) + " 0")
+    print("-" + str (x) + " " + str (y) + " " + str (z) + " 0")
+    print(str (x) + " -" + str (y) + " " + str (z) + " 0")
+    print(str (x) + " " + str (y) + " -" + str (z) + " 0")
 
 
 
@@ -347,40 +345,40 @@ def printXOR (x, y, z):
 
 def PARITY (n): 
 
-    print "p cnf " + str (n*2) + " " + str (4 * (n-1) + 2)
+    print("p cnf " + str (n*2) + " " + str (4 * (n-1) + 2))
 
-    print "e", 
+    print("e", end=' ') 
 
     for i in range (n):
-        print str (i+1), 
+        print(str (i+1), end=' ') 
 
-    print "0"
+    print("0")
 
     z = str (n+1)
 
-    print "a " + z + " 0"
+    print("a " + z + " 0")
 
-    print "e", 
+    print("e", end=' ') 
     for i in range (n-1): 
-        print str (n + i + 2),
+        print(str (n + i + 2), end=' ')
 
-    print "0"
+    print("0")
 
     printXOR (1, 2, n+2)
 
     for i in range (n-2): 
         printXOR (n+i+2, i+3, n+i+3)
  
-    print z + " " + str (2 * n) + " 0"
-    print "-" + z + " -" + str (2 * n) + " 0"
+    print(z + " " + str (2 * n) + " 0")
+    print("-" + z + " -" + str (2 * n) + " 0")
 
 
 def printXORl (x, y, z, a): 
 
-    print "-" + str (x) + " -" + str (y) + " -" + str (z) + " " + str (a) + " 0"
-    print "-" + str (x) + " " + str (y) + " " + str (z) + " " + str (a) + " 0"
-    print  str (x) + " -" + str (y) + " " + str (z) + " " + str (a) + " 0"
-    print  str (x) + " " + str (y) + " -" + str (z) + " " + str (a) + " 0"
+    print("-" + str (x) + " -" + str (y) + " -" + str (z) + " " + str (a) + " 0")
+    print("-" + str (x) + " " + str (y) + " " + str (z) + " " + str (a) + " 0")
+    print(str (x) + " -" + str (y) + " " + str (z) + " " + str (a) + " 0")
+    print(str (x) + " " + str (y) + " -" + str (z) + " " + str (a) + " 0")
 
 
 
@@ -390,24 +388,24 @@ def printXORl (x, y, z, a):
 
 def LQ_PARITY (n): 
 
-    print "p cnf " + str (n*2) + " " + str (8 * (n-1) + 2)
+    print("p cnf " + str (n*2) + " " + str (8 * (n-1) + 2))
 
-    print "e", 
+    print("e", end=' ') 
 
     for i in range (n):
-        print str (i+1), 
+        print(str (i+1), end=' ') 
 
-    print "0"
+    print("0")
 
     z = (n+1)
 
-    print "a " + str(z) + " 0"
+    print("a " + str(z) + " 0")
 
-    print "e", 
+    print("e", end=' ') 
     for i in range (n-1): 
-        print str (n + i + 2),
+        print(str (n + i + 2), end=' ')
 
-    print "0"
+    print("0")
 
     printXORl (1, 2, n+2, z)
     printXORl (1, 2, n+2, -z)
@@ -416,16 +414,16 @@ def LQ_PARITY (n):
         printXORl (n+i+2, i+3, n+i+3, z)
         printXORl (n+i+2, i+3, n+i+3, -z)
  
-    print str(z) + " " + str (2 * n) + " 0"
-    print "-" + str(z) + " -" + str (2 * n) + " 0"
+    print(str(z) + " " + str (2 * n) + " 0")
+    print("-" + str(z) + " -" + str (2 * n) + " 0")
 
 
 def printXORu (x, y, z, a, b): 
 
-    print "-" + str (x) + " -" + str (y) + " -" + str (z) + " " + str (a) + " " + str (b) +" 0"
-    print "-" + str (x) + " " + str (y) + " " + str (z) + " " + str (a) + " " + str (b) + " 0"
-    print  str (x) + " -" + str (y) + " " + str (z) + " " + str (a) + " " + str (b) + " 0"
-    print  str (x) + " " + str (y) + " -" + str (z) + " " + str (a) + " " + str (b) + " 0"
+    print("-" + str (x) + " -" + str (y) + " -" + str (z) + " " + str (a) + " " + str (b) +" 0")
+    print("-" + str (x) + " " + str (y) + " " + str (z) + " " + str (a) + " " + str (b) + " 0")
+    print(str (x) + " -" + str (y) + " " + str (z) + " " + str (a) + " " + str (b) + " 0")
+    print(str (x) + " " + str (y) + " -" + str (z) + " " + str (a) + " " + str (b) + " 0")
 
 
 
@@ -434,25 +432,25 @@ def printXORu (x, y, z, a, b):
 # New Resolution-Based QBF Calculi and Their Proof Complexity. TOCT 11(4): 26:1-26:42 (2019)
 def QU_PARITY (n): 
 
-    print "p cnf " + str (n*2+1) + " " + str (8 * (n-1) + 2)
+    print("p cnf " + str (n*2+1) + " " + str (8 * (n-1) + 2))
 
-    print "e", 
+    print("e", end=' ') 
 
     for i in range (n):
-        print str (i+1), 
+        print(str (i+1), end=' ') 
 
-    print "0"
+    print("0")
 
     z1 = (n+1)
     z2 = (2*n+1)
 
-    print "a " + str(z1) + " " + str (z2) + " 0"
+    print("a " + str(z1) + " " + str (z2) + " 0")
 
-    print "e", 
+    print("e", end=' ') 
     for i in range (n-1): 
-        print str (n + i + 2),
+        print(str (n + i + 2), end=' ')
 
-    print "0"
+    print("0")
 
     printXORu (1, 2, n+2, z1, z2)
     printXORu (1, 2, n+2, -z1, -z2)
@@ -461,8 +459,8 @@ def QU_PARITY (n):
         printXORu (n+i+2, i+3, n+i+3, z1, z2)
         printXORu (n+i+2, i+3, n+i+3, -z1, -z2)
  
-    print str(z1) + " " + str(z2) + " " + str (2 * n) + " 0"
-    print "-" + str(z1) + " -" + str (z2) + " -" + str (2 * n) + " 0"
+    print(str(z1) + " " + str(z2) + " " + str (2 * n) + " 0")
+    print("-" + str(z1) + " -" + str (z2) + " -" + str (2 * n) + " 0")
 
 
 
@@ -472,145 +470,145 @@ def QU_PARITY (n):
 #QBF Resolution Systems and Their Proof Complexities. SAT 2014: 154-169
 def KBKF_QU (n): 
 
-    print "p cnf " + str (5 * n) +  " " + str (4*n+1)  
+    print("p cnf " + str (5 * n) +  " " + str (4*n+1))  
 
     for i in range (n): 
-        print "e " + str (n + i +1) + " " + str (2*n +i +1) + " 0"
-        print "a " + str (i+1) + " " + str (4*n+i+1) + " 0"
+        print("e " + str (n + i +1) + " " + str (2*n +i +1) + " 0")
+        print("a " + str (i+1) + " " + str (4*n+i+1) + " 0")
 
-    print "e", 
+    print("e", end=' ') 
     for i in range (n): 
-        print str (3*n + i + 1), 
-    print "0"
+        print(str (3*n + i + 1), end=' ') 
+    print("0")
 
 
     for i in range (n-1):
-        print str (n + i + 1) + " " + str (i+1) + " " + str (4*n+i + 1), 
-        print "-" + str (n+i+2) + " -" + str (2*n+i+2) + " 0"
+        print(str (n + i + 1) + " " + str (i+1) + " " + str (4*n+i + 1), end=' ') 
+        print("-" + str (n+i+2) + " -" + str (2*n+i+2) + " 0")
  
-        print str (2*n + i + 1) + " -" + str (i+1) + " -" + str (4*n+i+1), 
-        print "-" + str (n+i+2) + " -" + str (2*n+i+2) + " 0"
+        print(str (2*n + i + 1) + " -" + str (i+1) + " -" + str (4*n+i+1), end=' ') 
+        print("-" + str (n+i+2) + " -" + str (2*n+i+2) + " 0")
 
-    print str (n + n) + " " + str (n) + " " + str (5*n), 
-
-    for i in range (n): 
-        print "-" + str (3 * n + i + 1), 
-    print "0"
-
-    print str (2*n + n) + " -" + str (n) + " -" + str (5*n), 
+    print(str (n + n) + " " + str (n) + " " + str (5*n), end=' ') 
 
     for i in range (n): 
-        print "-" + str (3 * n + i + 1), 
-    print "0"
+        print("-" + str (3 * n + i + 1), end=' ') 
+    print("0")
+
+    print(str (2*n + n) + " -" + str (n) + " -" + str (5*n), end=' ') 
+
+    for i in range (n): 
+        print("-" + str (3 * n + i + 1), end=' ') 
+    print("0")
 
     for i in range (n): 
 
-        print str (i+1) + " " + str (4*n+i+1) + " " +str (3*n+i+1) + " 0"
-        print "-" + str (i+1) +" -" + str (4*n+i+1)+ " " + str (3*n+i+1) + " 0"
+        print(str (i+1) + " " + str (4*n+i+1) + " " +str (3*n+i+1) + " 0")
+        print("-" + str (i+1) +" -" + str (4*n+i+1)+ " " + str (3*n+i+1) + " 0")
 
-    print "-" + str (n + 1) + " -" + str (2*n + 1) + " 0"
+    print("-" + str (n + 1) + " -" + str (2*n + 1) + " 0")
 
 #kleine buening et al. Q-Resolution Paper
 def KBKF (n): 
 
-    print "p cnf " + str (4 * n) +  " " + str (4*n+1)  
+    print("p cnf " + str (4 * n) +  " " + str (4*n+1))  
 
     for i in range (n): 
-        print "e " + str (n + i +1) + " " + str (2*n +i +1) + " 0"
-        print "a " + str (i+1) + " 0"
+        print("e " + str (n + i +1) + " " + str (2*n +i +1) + " 0")
+        print("a " + str (i+1) + " 0")
 
-    print "e", 
+    print("e", end=' ') 
     for i in range (n): 
-        print str (3*n + i + 1), 
-    print "0"
+        print(str (3*n + i + 1), end=' ') 
+    print("0")
 
 
     for i in range (n-1):
-        print str (n + i + 1) + " " + str (i+1), 
-        print "-" + str (n+i+2) + " -" + str (2*n+i+2) + " 0"
+        print(str (n + i + 1) + " " + str (i+1), end=' ') 
+        print("-" + str (n+i+2) + " -" + str (2*n+i+2) + " 0")
  
-        print str (2*n + i + 1) + " -" + str (i+1), 
-        print "-" + str (n+i+2) + " -" + str (2*n+i+2) + " 0"
+        print(str (2*n + i + 1) + " -" + str (i+1), end=' ') 
+        print("-" + str (n+i+2) + " -" + str (2*n+i+2) + " 0")
 
-    print str (n + n) + " " + str (n), 
-
-    for i in range (n): 
-        print "-" + str (3 * n + i + 1), 
-    print "0"
-
-    print str (2*n + n) + " -" + str (n), 
+    print(str (n + n) + " " + str (n), end=' ') 
 
     for i in range (n): 
-        print "-" + str (3 * n + i + 1), 
-    print "0"
+        print("-" + str (3 * n + i + 1), end=' ') 
+    print("0")
+
+    print(str (2*n + n) + " -" + str (n), end=' ') 
+
+    for i in range (n): 
+        print("-" + str (3 * n + i + 1), end=' ') 
+    print("0")
 
     for i in range (n): 
 
-        print str (i+1) + " " + str (3*n+i+1) + " 0"
-        print "-" + str (i+1) + " " + str (3*n+i+1) + " 0"
+        print(str (i+1) + " " + str (3*n+i+1) + " 0")
+        print("-" + str (i+1) + " " + str (3*n+i+1) + " 0")
 
-    print "-" + str (n + 1) + " -" + str (2*n + 1) + " 0"
+    print("-" + str (n + 1) + " -" + str (2*n + 1) + " 0")
 
 #Valeriy Balabanov, Magdalena Widl, Jie-Hong R. Jiang:
 #QBF Resolution Systems and Their Proof Complexities. SAT 2014: 154-169
 def KBKF_LD (n): 
 
-    print "p cnf " + str (4 * n) +  " " + str (4*n+1)  
+    print("p cnf " + str (4 * n) +  " " + str (4*n+1))  
 
     for i in range (n): 
-        print "e " + str (n + i +1) + " " + str (2*n +i +1) + " 0"
-        print "a " + str (i+1) + " 0"
+        print("e " + str (n + i +1) + " " + str (2*n +i +1) + " 0")
+        print("a " + str (i+1) + " 0")
 
-    print "e", 
+    print("e", end=' ') 
     for i in range (n): 
-        print str (3*n + i + 1), 
-    print "0"
+        print(str (3*n + i + 1), end=' ') 
+    print("0")
 
 
     for i in range (n-1):
-        print str (n + i + 1) + " " + str (i+1), 
-        print "-" + str (n+i+2) + " -" + str (2*n+i+2), 
+        print(str (n + i + 1) + " " + str (i+1), end=' ') 
+        print("-" + str (n+i+2) + " -" + str (2*n+i+2), end=' ') 
 
         for j in range (n): 
-            print "-" + str (3*n + j +1),
-        print "0"
+            print("-" + str (3*n + j +1), end=' ')
+        print("0")
  
-        print str (2*n + i + 1) + " -" + str (i+1), 
-        print "-" + str (n+i+2) + " -" + str (2*n+i+2),
+        print(str (2*n + i + 1) + " -" + str (i+1), end=' ') 
+        print("-" + str (n+i+2) + " -" + str (2*n+i+2), end=' ')
         
         for j in range (n): 
-            print "-" + str (3*n + j +1),
-        print "0"
+            print("-" + str (3*n + j +1), end=' ')
+        print("0")
 
-    print str (n + n) + " " + str (n), 
-
-    for i in range (n): 
-        print "-" + str (3 * n + i + 1), 
-    print "0"
-
-    print str (2*n + n) + " -" + str (n), 
+    print(str (n + n) + " " + str (n), end=' ') 
 
     for i in range (n): 
-        print "-" + str (3 * n + i + 1), 
-    print "0"
+        print("-" + str (3 * n + i + 1), end=' ') 
+    print("0")
+
+    print(str (2*n + n) + " -" + str (n), end=' ') 
+
+    for i in range (n): 
+        print("-" + str (3 * n + i + 1), end=' ') 
+    print("0")
 
     for i in range (n): 
 
-        print str (i+1) + " " + str (3*n+i+1), 
+        print(str (i+1) + " " + str (3*n+i+1), end=' ') 
         for j in range (n-i-1): 
-            print "-" + str (3*n+i+j+2),
-        print "0"
+            print("-" + str (3*n+i+j+2), end=' ')
+        print("0")
 
 
-        print "-" + str (i+1) + " " + str (3*n+i+1),
+        print("-" + str (i+1) + " " + str (3*n+i+1), end=' ')
         for j in range (n-i-1): 
-            print "-" + str (3*n+i+j+2),
-        print "0"
+            print("-" + str (3*n+i+j+2), end=' ')
+        print("0")
 
-    print "-" + str (n + 1) + " -" + str (2*n + 1),
+    print("-" + str (n + 1) + " -" + str (2*n + 1), end=' ')
     for j in range (n): 
-        print "-" + str (3*n + j +1),
-    print "0"
+        print("-" + str (3*n + j +1), end=' ')
+    print("0")
 
 
 if (len (sys.argv) == 2): 
