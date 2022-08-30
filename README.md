@@ -28,6 +28,9 @@ where
 <li>KBKF:        Kleine Buening et al Formulas</li>
 <li>KBKF_QU:     Variation of Kleine Buening et al Formulas hard for QU</li>
 <li>KBKF_LD:     Variation of Kleine Buening et al Formulas hard for LD</li>
+<li>KBKFNEG:     Kleine Buening et al Formulas - Satisfiable</li>
+<li>PARITYNEG:   Parity Formulas - Satisfiable</li>
+<li>KBKFQRE:     Kleine Buening et al Formulas - Satisfiable and quantifier rearranged</li>
 </ul>
 
 
