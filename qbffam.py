@@ -373,6 +373,35 @@ def PARITY (n):
     print("-" + z + " -" + str (2 * n) + " 0")
 
 
+def PARITYNEG (n):
+    print("p cnf " + str (n*2) + " " + str (4 * (n-1) + 2))
+
+    print("a", end=' ') 
+
+    for i in range (n):
+        print(str (i+1), end=' ') 
+
+    print("0")
+
+    z = str (n+1)
+
+    print("e " + z + " 0")
+
+    print("e", end=' ') 
+    for i in range (n-1): 
+        print(str (n + i + 2), end=' ')
+
+    print("0")
+
+    printXOR (1, 2, n+2)
+
+    for i in range (n-2): 
+        printXOR (n+i+2, i+3, n+i+3)
+ 
+    print(z + " " + str (2 * n) + " 0")
+    print("-" + z + " -" + str (2 * n) + " 0")
+
+
 def printXORl (x, y, z, a): 
 
     print("-" + str (x) + " -" + str (y) + " -" + str (z) + " " + str (a) + " 0")
@@ -509,6 +538,181 @@ def KBKF_QU (n):
     print("-" + str (n + 1) + " -" + str (2*n + 1) + " 0")
 
 #kleine buening et al. Q-Resolution Paper
+
+#------------------------------------------------------------------------
+#true KBKF formulas
+def KBKFNEG (n):
+   
+    #counter for variables (first number - variable count)
+    counter = 0
+    # counter for initial variables
+    counter2 = 0
+ 
+    allvariables = 8*n+1
+    
+    print("p cnf " + str(8*n+1) + " " + str(14*n-1))
+
+    for i in range (n): 
+        print("a " + str (n + i +1) + " " + str (2*n +i +1) + " 0")
+        print("e " + str (i+1) + " 0")
+        counter += 3
+        counter2 += 3
+
+    print("a", end=' ')
+    for i in range (n): 
+        print(str (3*n + i + 1), end=' ') 
+        counter += 1
+        counter2 += 1
+    print("0")
+
+    newlyGvariables = allvariables - counter2
+
+    print("e", end=' ')
+    for i in range(newlyGvariables):
+        print(str(counter2+i+1), end=' ')
+    print("0")
+
+    for i in range (n-1):
+        
+        print("-" + str(counter+1) + " -" + str (n + i + 1) + " 0")
+        print("-" + str(counter+1) + " -" + str (i+1) + " 0")
+        print("-" + str(counter+1) + " " + str (n+i+2) + " 0")
+        print("-" + str(counter+1) + " " + str (2*n+i+2) + " 0")
+        counter += 1
+
+        print("-" + str(counter+1) + " -" + str (2*n + i + 1)+ " 0")
+        print("-" + str(counter+1) + " " + str (i+1) + " 0")
+        print("-" + str(counter+1) + " " + str (n+i+2) + " 0")
+        print("-" + str(counter+1) + " " + str (2*n+i+2) + " 0")
+        counter += 1
+
+    print("-" + str(counter+1) + " -" + str (n + n)+ " 0")
+    print("-" + str(counter+1) + " -" + str (n)+ " 0")
+    
+    for i in range (n): 
+        print("-" + str(counter+1) + " " + str (3 * n + i + 1) + " 0") 
+        
+    counter += 1
+    print("-" + str(counter+1) + " -" + str (2*n + n) + " 0")
+    print("-" + str(counter+1) + " " + str (n) + " 0")
+
+    for i in range (n): 
+        print("-" + str(counter+1) + " " + str (3 * n + i + 1) + " 0") 
+        
+    counter += 1
+    
+    for i in range (n): 
+
+        print("-" + str(counter+1) + " -" + str (i+1)+ " 0")
+        print("-" + str(counter+1) + " -" + str (3*n+i+1)+ " 0")
+        counter += 1
+
+        print("-" + str(counter+1) + " " + str (i+1) + " 0")
+        print("-" + str(counter+1) + " -" + str (3*n+i+1) + " 0")
+        counter += 1
+
+    print("-" + str(counter+1) + " " + str (n + 1) + " 0")
+    print("-" + str(counter+1) + " " + str (2*n + 1) + " 0")
+    
+    for i in range(newlyGvariables):
+        print(str(counter2+i+1), end=' ')
+    print("0")
+   
+   
+#------------------------------------------------------------------------
+#true KBKF formulas with reordered quantifiers
+def KBKFQRE (n):
+   
+    #counter for variables (first number - variable count)
+    counter = 0
+    # counter for initial variables
+    counter2 = 0
+ 
+    allvariables = 8*n+1
+    originalVariables = 4*n
+    
+    
+    print("p cnf " + str(8*n+1) + " " + str(14*n-1))
+
+    for i in range (n): 
+        print("a " + str (n + i +1) + " " + str (2*n +i +1) + " 0")
+        if(i < 1):
+            print("e " + str(allvariables) + " 0")
+        else:
+            print("e "+ str(originalVariables+1) + " " + str(originalVariables+2) + " 0") 
+            originalVariables = originalVariables+2
+        print("e " + str (i+1) + " 0")
+        counter += 3
+        counter2 += 3
+
+    
+
+    tempCounter = originalVariables + 3
+    lastVar = 0
+    for i in range (n-1): 
+        print("a " + str (3*n + i + 1) + " 0") 
+        lastVar = 3*n + i + 1
+        print("e " + str(tempCounter) + " " + str(tempCounter+1) + " 0")
+        tempCounter = tempCounter + 2
+        counter += 1
+        counter2 += 1
+    
+    counter = counter +1
+    counter2 = counter2 +1
+    newlyGvariables = allvariables - counter2
+    
+    print("a " + str(lastVar + 1) + " 0")
+
+    print("e " + str(originalVariables+1) + " " + str(originalVariables+2) + " " + str(tempCounter) + " " + str(tempCounter+1) + " 0")
+
+    for i in range (n-1):
+        
+        print("-" + str(counter+1) + " -" + str (n + i + 1) + " 0")
+        print("-" + str(counter+1) + " -" + str (i+1) + " 0")
+        print("-" + str(counter+1) + " " + str (n+i+2) + " 0")
+        print("-" + str(counter+1) + " " + str (2*n+i+2) + " 0")
+        counter += 1
+
+        print("-" + str(counter+1) + " -" + str (2*n + i + 1)+ " 0")
+        print("-" + str(counter+1) + " " + str (i+1) + " 0")
+        print("-" + str(counter+1) + " " + str (n+i+2) + " 0")
+        print("-" + str(counter+1) + " " + str (2*n+i+2) + " 0")
+        counter += 1
+
+    print("-" + str(counter+1) + " -" + str (n + n)+ " 0")
+    print("-" + str(counter+1) + " -" + str (n)+ " 0")
+    
+    for i in range (n): 
+        print("-" + str(counter+1) + " " + str (3 * n + i + 1) + " 0") 
+        
+    counter += 1
+    print("-" + str(counter+1) + " -" + str (2*n + n) + " 0")
+    print("-" + str(counter+1) + " " + str (n) + " 0")
+
+    for i in range (n): 
+        print("-" + str(counter+1) + " " + str (3 * n + i + 1) + " 0") 
+        
+    counter += 1
+    
+    for i in range (n): 
+
+        print("-" + str(counter+1) + " -" + str (i+1)+ " 0")
+        print("-" + str(counter+1) + " -" + str (3*n+i+1)+ " 0")
+        counter += 1
+
+        print("-" + str(counter+1) + " " + str (i+1) + " 0")
+        print("-" + str(counter+1) + " -" + str (3*n+i+1) + " 0")
+        counter += 1
+
+    print("-" + str(counter+1) + " " + str (n + 1) + " 0")
+    print("-" + str(counter+1) + " " + str (2*n + 1) + " 0")
+    
+    for i in range(newlyGvariables):
+        print(str(counter2+i+1), end=' ')
+    print("0")
+ 
+
+#kleine buening et al. Q-Resolution Paper
 def KBKF (n): 
 
     print("p cnf " + str (4 * n) +  " " + str (4*n+1))  
@@ -630,6 +834,9 @@ if (len (sys.argv) == 2):
         print ("KBKF        Kleine Buening et al Formulas")
         print ("KBKF_QU     Variation of Kleine Buening et al Formulas hard for QU")
         print ("KBKF_LD     Variation of Kleine Buening et al Formulas hard for LD")
+        print ("KBKFNEG     Kleine Buening et al Formulas - Satisfiable")
+        print ("PARITYNEG   Parity Formulas - Satisfiable")
+        print ("KBKFQRE    Kleine Buening et al Formulas - Satisfiable and quantifier rearranged")
         sys.exit (0)
 
 
@@ -648,6 +855,16 @@ f = sys.argv[1]
 
 if f == "EQ": 
     EQ (n)
+    sys.exit (0)
+
+if f == "KBKFNEG": 
+    KBKFNEG(n)
+    sys.exit (0)
+if f == "PARITYNEG": 
+    PARITYNEG(n)
+    sys.exit (0)
+if f == "KBKFQRE": 
+    KBKFQRE(n)
     sys.exit (0)
 
 if f == "EQ2": 
