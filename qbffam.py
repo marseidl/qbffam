@@ -373,7 +373,7 @@ def PARITY (n):
     print("-" + z + " -" + str (2 * n) + " 0")
 
 
-def PARITYNEG (n):
+def PARITYTrue (n):
     print("p cnf " + str (n*2) + " " + str (4 * (n-1) + 2))
 
     print("a", end=' ') 
@@ -541,7 +541,7 @@ def KBKF_QU (n):
 
 #------------------------------------------------------------------------
 #true KBKF formulas
-def KBKFNEG (n):
+def KBKFTrue (n):
    
     #counter for variables (first number - variable count)
     counter = 0
@@ -834,8 +834,8 @@ if (len (sys.argv) == 2):
         print ("KBKF        Kleine Buening et al Formulas")
         print ("KBKF_QU     Variation of Kleine Buening et al Formulas hard for QU")
         print ("KBKF_LD     Variation of Kleine Buening et al Formulas hard for LD")
-        print ("KBKFNEG     Kleine Buening et al Formulas - Satisfiable")
-        print ("PARITYNEG   Parity Formulas - Satisfiable")
+        print ("KBKFTrue     Kleine Buening et al Formulas - Satisfiable")
+        print ("PARITYTrue   Parity Formulas - Satisfiable")
         print ("KBKFQRE    Kleine Buening et al Formulas - Satisfiable and quantifier rearranged")
         sys.exit (0)
 
@@ -857,11 +857,11 @@ if f == "EQ":
     EQ (n)
     sys.exit (0)
 
-if f == "KBKFNEG": 
-    KBKFNEG(n)
+if f == "KBKFTrue": 
+    KBKFTrue(n)
     sys.exit (0)
-if f == "PARITYNEG": 
-    PARITYNEG(n)
+if f == "PARITYTrue": 
+    PARITYTrue(n)
     sys.exit (0)
 if f == "KBKFQRE": 
     KBKFQRE(n)
